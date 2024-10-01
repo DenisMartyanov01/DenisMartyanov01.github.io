@@ -1,69 +1,138 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header class="header">
-        <h1>Food Construct</h1>
-        <nav>
-            <a href="#about">О нас</a>
-            <a href="#list">Собрать ланч</a>
-            <a href="#table">Заказы</a>
-            <a href="#footer">Контакты</a>
-        </nav>
-    </header>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="content">
+                
+                <header class="header">
+                    <h2 class="title">Food Construct</h2>
+                    <nav class="main-menu">
+                        <ul>
+                            <li><a href="about.html">О нас</a></li>
+                            <li><a class="active" href="#create-lunch">Собрать ланч</a></li>
+                            <li><a href="">Заказы</a></li>
+                            <li><a href="#footer">Контакты</a>    </li>
+                        </ul>
+                    </nav>
+                </header>
+                
+                <main>
+                    <section class="product-line" id="create-lunch">
+                        <h2 class="section">Выберите суп</h2>
+                        <div class="container">
+                            <div class="block">
+                                <img src="4Sm8zIFiA9E.jpg" alt="dd">
+                                <p>195 &#8381</p>
+                                <p>Гаспачо</p>
+                                <p class="volume">350 г</p>
+                                <button class="button">
+                                    Добавить
+                                </button>
+                            </div>
+                            
+                            <div class="block">
+                                <img src="4Sm8zIFiA9E.jpg" alt="dd">
+                                <p>185 &#8381</p>
+                                <p>Грибной суп-пюре</p>
+                                <p class="volume">330 г</p>
+                                <button class="button">
+                                    Добавить
+                                </button>
+                            </div>
+                            
+                            <div class="block">
+                                <img src="4Sm8zIFiA9E.jpg" alt="dd">
+                                <p>270 &#8381</p>
+                                <p>Норвежский суп</p>
+                                <p class="volume">330 г</p>
+                                <button class="button">
+                                    Добавить
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <div class="product-line">
+                        <h2 class="section">Выберите главное блюдо</h2>
+                        <div class="container">
+                            <div class="block">
+                                <img src="4Sm8zIFiA9E.jpg" alt="dd">
+                                <p>150 &#8381</p>
+                                <p>Жареная картошка с грибами</p>
+                                <p class="volume">250 г</p>
+                                <button class="button">
+                                    Добавить
+                                </button>
+                            </div>
+                            
+                            <div class="block">
+                                <img src="4Sm8zIFiA9E.jpg" alt="dd">
+                                <p>385 &#8381</p>
+                                <p>Лазанья</p>
+                                <p class="volume">310 г</p>
+                                <button class="button">
+                                    Добавить
+                                </button>
+                            </div>
+                            
+                            <div class="block">
+                                <img src="4Sm8zIFiA9E.jpg" alt="dd">
+                                <p>225 &#8381</p>
+                                <p>Котлеты из курицы с картофельным пюре</p>
+                                <p class="volume">280 г</p>
+                                <button class="button">
+                                    Добавить
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-line">
+                        <h2 class="section">Выберите напиток</h2>
+                        <div class="container">
+                            <div class="block">
+                                <img src="4Sm8zIFiA9E.jpg" alt="dd">
+                                <p>120 &#8381</p>
+                                <p>Апельсиновый сок</p>
+                                <p class="volume">300 мл</p>
+                                <button class="button">
+                                    Добавить
+                                </button>
+                            </div>
+                            
+                            <div class="block">
+                                <img src="4Sm8zIFiA9E.jpg" alt="dd">
+                                <p>90 &#8381</p>
+                                <p>Яблочный сок</p>
+                                <p class="volume">300 мл</p>
+                                <button class="button">
+                                    Добавить
+                                </button>
+                            </div>
+                            
+                            <div class="block">
+                                <img src="4Sm8zIFiA9E.jpg" alt="dd">
+                                <p>110 &#8381</p>
+                                <p>Морковный сок</p>
+                                <p class="volume">300 мл</p>
+                                <button class="button">
+                                Добавить
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
 
-    <main>
-        <section class="about" id="about">
-            <img src="175140.png" alt="photo1">
-            <h2>О нас</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt eius hic iste blanditiis molestiae praesentium perspiciatis numquam tenetur possimus voluptatem.</p>
-        </section>
-
-        <section class="list" id="list">
-            <h2>Приемущества</h2>
-            <ul>
-                <li>Быстрая доставка</li>
-                <li>Горячая еда</li>
-                <li>Наисление бонусов</li>
-            </ul>
-        </section>
-
-        <section class="table" id="table">
-            <h2>Топ блюд</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th></th> <th>Название</th> <th>Кол-во заказов</th> <th>Цена</th> 
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>1</th> <th>Лазанья</th> <th>185</th> <th>385</th>
-                    </tr>
-                    <tr>
-                        <th>2</th> <th>Том ям</th> <th>161</th> <th>365</th>
-                    </tr>
-                    <tr>
-                        <th>3</th> <th>Норвежскйи суп</th> <th>144</th> <th>270</th>
-                    </tr>
-                    <tr>
-                        <th>4</th> <th>Жареная картошка</th> <th>132</th> <th>150</th>
-                    </tr>
-                    <tr>
-                        <th>5</th> <th>Котлеты</th> <th>128</th> <th>325</th>
-                    </tr>
-                </tbody>
-
-            </table>
-        </section>
-    </main>
-    <footer id="footer">
-        <p>Позвонить нам +7-000-000-00-00</p>
-    </footer>
-</body>
+            <footer class="footer" id="footer">
+                <p>Позвонить нам +7-000-000-00-00</p>
+            </footer>
+        </div>
+    </body>
 </html>
