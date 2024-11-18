@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header class="header">
+            <h2 class="title">Food Construct</h2>
+            <nav class="main-menu">
+                <ul>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a class="active" href="#create-lunch">Собрать ланч</a></li>
+                    <li><a href="">Заказы</a></li>
+                    <li><a href="#footer">Контакты</a>    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <section class="product-line" id="create-lunch">
+                <h2 class="section">Выберите суп</h2>
+                <div class="filter">
+                    <button class="passive-filter" data-kind = "fish" data-type = "soup">Рыба</button>
+                    <button class="passive-filter" data-kind = "meat" data-type = "soup">Мясо</button>
+                    <button class="passive-filter" data-kind = "veg"  data-type = "soup">Вегетарианский</button>
+                </div>
+                <div class="container" id = soup></div>
+            
+                <h2 class="section">Выберите главное блюдо</h2>
+                <div class="filter">
+                    <button class="passive-filter" data-kind = "fish" data-type = "main">Рыба</button>
+                    <button class="passive-filter" data-kind = "meat" data-type = "main">Мясо</button>
+                    <button class="passive-filter" data-kind = "veg"  data-type = "main">Вегетарианский</button>
+                </div>
+                <div class="container" id = main></div>
+            
+                <h2 class="section">Выберите салат</h2>
+                <div class="filter">
+                    <button class="passive-filter" data-kind = "fish" data-type = "salat">Рыба</button>
+                    <button class="passive-filter" data-kind = "meat" data-type = "salat">Мясо</button>
+                    <button class="passive-filter" data-kind = "veg"  data-type = "salat">Вегетарианский</button>
+                </div>
+                <div class="container" id = salat></div>
+
+                <h2 class="section">Выберите напиток</h2>
+                <div class="filter">
+                    <button class="passive-filter" data-kind = "hot"  data-type = "juce">Горячий</button>
+                    <button class="passive-filter" data-kind = "cold" data-type = "juce">Холодный</button>
+                </div>
+                <div class="container" id = juce></div>
+            
+                <h2 class="section">Выберите десерт</h2>
+                <div class="filter">
+                    <button class="passive-filter" data-kind = "small"  data-type = "desert">Маленькая порция</button>
+                    <button class="passive-filter" data-kind = "medium" data-type = "desert">Средняя порция	</button>
+                    <button class="passive-filter" data-kind = "big"    data-type = "desert">Большая порция</button>
+                </div>
+                <div class="container" id = desert></div>
+            
+            </section>
+                
+            <h2 class="make-order">Сделать заказ</h2>
+
+            <form action="https://httpbin.org/post" method="post" class="order">
+                <div class="order-food">
+                    <h3>Ваш заказ</h3>
+                    <div class="input-block" id="myorder"></div>
+                    
+                    <div class="input-block">
+                        <label for="order-comment">Комментарий к заказу</label>    <br />
+                        <textarea name="order-comment" id="order-comment"></textarea>
+
+                    </div>
+                </div>
+
+                <input id = "_soup"     name="order_soup"   type="hidden" value = "">
+                <input id = "_main"     name="order_main"   type="hidden" value = "">
+                <input id = "_salat"    name="order_salat"  type="hidden" value = "">
+                <input id = "_juce"     name="order_juce"   type="hidden" value = "">
+                <input id = "_desert"   name="order_desert" type="hidden" value = "">
+
+                <div class="order-info">
+                    <h3>Ваши данные</h3>
+                    <div class="input-block">
+                        <label for="name">Имя</label>    <br />
+
+                        <input type="text" name="text" id="name" required>
+                    </div>
+                    <div class="input-block">
+                        <label for="email">Email</label>    <br />
+
+                        <input type="email" name="text" id="email" required>
+                    </div>
+                    <div class="input-button">
+                        <input type="checkbox" name="text" id="get-info">
+                        <label for="get-info">Получать информацию о скидках и акциях</label>
+                    </div>
+                    <div class="input-block">
+                        <label for="phone">Номер телефона</label>   <br />
+                        <input type="tel" name="text" id="phone" required>
+                    </div>
+                    <div class="input-block">
+                        <label for="adress">Адресс доставки</label>   <br />
+                        <input type="text" name="text" id="adress" required>   <br />
+                        <label for="adress">Доставка осуществляется только по Москве</label>
+                    </div class="input-block">
+
+                    <fieldset class="input-button">
+                        <legend>Время доставки:</legend>
+                        <div>
+                            <input type="radio" name="radio" id="now" required>
+                            <label for="now">Как можно скорее</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="radio" id="time" required>
+                            <label for="time">К указаному времени</label>
+                        </div>
+                    </fieldset>
+
+                    <div class="input-block">
+                        <label for="time-come">Укажите время доставки</label>   <br />
+                        <input type="time" name="time" id="time-come" min="09:00" max="23:00">   <br />
+                        <label for="time-come">Доступное время доставки с 7:00 до 23:00</label>
+                    </div>
+
+                    <button type="reset" >
+                        Сбросить
+                    </button>
+                    <button type="submit" >
+                        Отправить 
+                    </button>
+                </div>
+            </form>
+
+        </main>
+
+        <footer class="footer" id="footer">
+            <p>Позвонить нам +7-000-000-00-00</p>
+        </footer>
+
+        <script src="list.js"></script>
+        <script src="main.js"></script>
+
+    </body>
+</html>
