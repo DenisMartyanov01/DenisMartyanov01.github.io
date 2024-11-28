@@ -1,20 +1,20 @@
 var order = {
 
     soup: "",
-    main: "",
-    salat: "",
-    juce: "",
-    desert: ""
+    "main-course": "",
+    salad: "",
+    drink: "",
+    dessert: ""
 
 }
 
 var filter = {
 
     soup: "",
-    main: "",
-    salat: "",
-    juce: "",
-    desert: ""
+    "main-course": "",
+    salad: "",
+    drink: "",
+    dessert: ""
 }
 
 const combos = [
@@ -57,7 +57,7 @@ var soupes_list = []
 
 var url = "https://edu.std-900.ist.mospolytech.ru/labs/api/dishes"
 
-var buttons
+var buttons;
 
 function loadDishes() {
     fetch(url)
@@ -68,6 +68,8 @@ function loadDishes() {
             soupes_list = data; 
             soupes_list.sort(comp);
             drawCarts()
+            //main();
+
 
     });
 }
@@ -95,6 +97,14 @@ function drawCarts() {
         btn.className = 'button';
         btn.textContent = "Добавить"
         btn.id = soupes_list[i].keyword;
+        btn.dataset.category = soupes_list[i].category;
+        btn.addEventListener("click", function() {
+
+            addFood(soupes_list[i]);
+            addData();
+            drawOrderList();
+
+        });
 
         div.append(img);
         div.append(p1);
@@ -102,14 +112,16 @@ function drawCarts() {
         div.append(p3);
         div.append(btn);
 
+
         document.getElementById(soupes_list[i].category).append(div);
         
     }
+    main()
 }
 
 function drawOrderList() {
 
-    if (order.main + order.soup + order.salat + order.juce + order.desert == "") {
+    if (order["main-course"] + order.soup + order.salad + order.drink + order.dessert == "") {
         myorder.textContent = "Ничего не выбрано"
     }
     else {
@@ -132,9 +144,9 @@ function drawOrderList() {
         let h2 = document.createElement("h3");
         h2.textContent = "Главное блюдо";
         let p2 = document.createElement("p");
-        if (order.main) {
-            p2.textContent = order.main.name + ' ' + order.main.price + ' ₽';
-            fullPrice += order.main.price
+        if (order["main-course"]) {
+            p2.textContent = order["main-course"].name + ' ' + order["main-course"].price + ' ₽';
+            fullPrice += order["main-course"].price
         }
         else 
             p2.textContent = "Не выбрано";
@@ -143,9 +155,9 @@ function drawOrderList() {
         let h3 = document.createElement("h3");
         h3.textContent = "Салат";
         let p3 = document.createElement("p");
-        if (order.salat) {
-            p3.textContent = order.salat.name + ' ' + order.salat.price + ' ₽';
-            fullPrice += order.salat.price
+        if (order.salad) {
+            p3.textContent = order.salad.name + ' ' + order.salad.price + ' ₽';
+            fullPrice += order.salad.price
 
         }
         else 
@@ -154,9 +166,9 @@ function drawOrderList() {
         let h4 = document.createElement("h3");
         h4.textContent = "Напиток";
         let p4 = document.createElement("p");
-        if (order.juce) {
-            p4.textContent = order.juce.name + ' ' + order.juce.price + ' ₽';
-            fullPrice += order.juce.price
+        if (order.drink) {
+            p4.textContent = order.drink.name + ' ' + order.drink.price + ' ₽';
+            fullPrice += order.drink.price
         }
         else 
             p4.textContent = "Не выбрано";
@@ -164,9 +176,9 @@ function drawOrderList() {
         let h5 = document.createElement("h3");
         h5.textContent = "Десерт";
         let p5 = document.createElement("p");
-        if (order.desert) {
-            p5.textContent = order.desert.name + ' ' + order.desert.price + ' ₽';
-            fullPrice += order.desert.price
+        if (order.dessert) {
+            p5.textContent = order.dessert.name + ' ' + order.dessert.price + ' ₽';
+            fullPrice += order.dessert.price
         }
         else 
             p5.textContent = "Не выбрано";
@@ -205,7 +217,7 @@ function drawIcon(name, _div) {
 
     div.classList.add("icon")
 
-    if (name[0] == "desert") {
+    if (name[0] == "dessert") {
         let p2 = document.createElement("p");
         p2.classList.add("add-info")
         p2.textContent = "(Можно добавить к любому заказу)"
@@ -217,26 +229,28 @@ function drawIcon(name, _div) {
 
 }
 
-function addFood(_id) {
+function addFood(object) {
 
     console.log("addFood")
 
-    for(let i = 0; i < soupes_list.length; i++) {
+    //for(let i = 0; i < soupes_list.length; i++) {
 
-        if (_id == soupes_list[i].keyword) {
+        //if (_id == soupes_list[i].keyword) {
 
-            order[soupes_list[i].category] = soupes_list[i];
-        }
-    }
+            order[object.category] = object;
+        //}
+    //}
+    console.clear()
+    console.log(order)
 }
 
 function addData() {
     
     document.getElementById("_soup").value      = order.soup.keyword
-    document.getElementById("_main").value      = order.main.keyword
-    document.getElementById("_salat").value     = order.salat.keyword
-    document.getElementById("_juce").value      = order.juce.keyword
-    document.getElementById("_desert").value    = order.desert.keyword
+    document.getElementById("_main").value      = order["main-course"].keyword
+    document.getElementById("_salad").value     = order.salad.keyword
+    document.getElementById("_drink").value     = order.drink.keyword
+    document.getElementById("_dessert").value   = order.dessert.keyword
 }
 
 function setFilter(element) {
@@ -247,8 +261,6 @@ function setFilter(element) {
         filter[element.dataset.type] = element.dataset.kind;
 
 }
-
-
 
 function drawButtons () {
 
@@ -297,23 +309,18 @@ for(let i = 0; i < combos.length; i++) {
 
 }
 
+function main () {
+    for(let i = 0; i < buttons.length; i++) {
+        console.log(buttons.id)
+        buttons[i].addEventListener('click', function () {
 
-for(let i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener('click', function () {
+            if (buttons[i].classList.contains("passive-filter") || buttons[i].classList.contains("active-filter")) {
+                console.log("filter")
 
-        if (buttons[i].classList.contains("passive-filter") || buttons[i].classList.contains("active-filter")) {
-            console.log("filter")
-
-            setFilter(buttons[i]);
-            hideCrats();
-            drawButtons();
-        }
-        else {
-            console.log("order")
-
-            addFood(buttons[i].id);
-            addData();
-            drawOrderList();
-        }
-    })
+                setFilter(buttons[i]);
+                hideCrats();
+                drawButtons();
+            }
+        })
+    }
 }
